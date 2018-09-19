@@ -32,12 +32,12 @@ namespace PetFinder.Controllers
 
         public ActionResult PetView()
         {
-            HttpWebRequest WR = WebRequest.CreateHttp("http://api.petfinder.com/pet.get?key=ad29bfe79d7472a7094451439946b3ef&id=38588699&format=json");
+            HttpWebRequest WR = WebRequest.CreateHttp("http://api.petfinder.com/pet.get?key=ad29bfe79d7472a7094451439946b3ef&id=42739495&format=json");
             HttpWebResponse Response = (HttpWebResponse)WR.GetResponse();
             StreamReader Reader = new StreamReader(Response.GetResponseStream());
-            string peopleData = Reader.ReadToEnd();
+            string petData = Reader.ReadToEnd();
 
-            JObject JsonData = JObject.Parse(peopleData);
+            JObject JsonData = JObject.Parse(petData);
             ViewBag.pet = JsonData["petfinder"]["pet"]["name"]["$t"];
             ViewBag.Image = JsonData["petfinder"]["pet"]["media"]["photos"]["photo"][3]["$t"];
             ViewBag.Message = "Page for viewing pet data.";

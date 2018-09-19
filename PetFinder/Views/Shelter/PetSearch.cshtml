@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "PetSearch";
+}
+
+<h2>PetSearch</h2>
+
+<form method="POST">
+
+    Breed<select id="breed" name="breed">
+        @for (int i = 0; i < ViewBag.BreedList.Count; i++)
+        {
+            
+            <option value="@ViewBag.BreedList[i]["$t"]">@ViewBag.BreedList[i]["$t"]</option>
+        }
+    </select>
+    Sex<select id="sex" name="sex">
+    <option value=""></option>
+    </select>
+</form>
+

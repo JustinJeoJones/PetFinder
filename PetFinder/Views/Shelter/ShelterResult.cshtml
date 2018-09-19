@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "ShelterResult";
+
+}
+
+<h2>ShelterResult</h2>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Zipcode</th>
+    </tr>
+    @for (int i = 0; i < ViewBag.ShelterList.Count; i++)
+    {  
+    <tr>
+        <td>@ViewBag.ShelterList[i]["name"]["$t"]</td>
+        <td>@ViewBag.ShelterList[i]["state"]["$t"]</td>
+        <td>@ViewBag.ShelterList[i]["city"]["$t"]</td>
+        <td>@ViewBag.ShelterList[i]["zip"]["$t"]</td>
+        <td><li>@Html.ActionLink("Use this shelter", "PetSearch", "Shelter", new { id = ViewBag.ShelterList[i]["id"]["$t"] })</li></td>
+    </tr>
+    }
+</table>
