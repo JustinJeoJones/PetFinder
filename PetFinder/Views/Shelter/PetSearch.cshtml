@@ -3,19 +3,26 @@
     ViewBag.Title = "PetSearch";
 }
 
-<h2>PetSearch</h2>
+<h3>Name: @ViewBag.ShelterInfo["name"]["$t"]</h3>
+<h5>Phone: @ViewBag.ShelterInfo["phone"]["$t"]</h5>
+<h5>Email: @ViewBag.ShelterInfo["email"]["$t"]</h5>
 
-<form method="POST">
-
-    Breed<select id="breed" name="breed">
-        @for (int i = 0; i < ViewBag.BreedList.Count; i++)
-        {
-            
-            <option value="@ViewBag.BreedList[i]["$t"]">@ViewBag.BreedList[i]["$t"]</option>
-        }
-    </select>
-    Sex<select id="sex" name="sex">
-    <option value=""></option>
-    </select>
-</form>
-
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Specie</th>
+        <th>Sex</th>
+        <th>Description</th>
+        <th>Picture</th>
+    </tr>
+    @for (int i = 0; i < ViewBag.PetList.Count; i++)
+    {
+    <tr>
+     <td>@ViewBag.PetList[i]["name"]["$t"]</td>
+     <td>@ViewBag.PetList[i]["animal"]["$t"]</td>
+    <td>@ViewBag.PetList[i]["sex"]["$t"]</td>
+    <td>@ViewBag.PetList[i]["description"]["$t"]</td>
+    <td><img height="250" width="250" src="@ViewBag.PetList[i]["media"]["photos"]["photo"][2]["$t"]" /></td>
+    </tr>
+    }
+</table>

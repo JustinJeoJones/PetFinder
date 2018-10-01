@@ -12,6 +12,7 @@
         <th>State</th>
         <th>City</th>
         <th>Zipcode</th>
+        <th>ID</th>
     </tr>
     @for (int i = 0; i < ViewBag.ShelterList.Count; i++)
     {  
@@ -20,7 +21,8 @@
         <td>@ViewBag.ShelterList[i]["state"]["$t"]</td>
         <td>@ViewBag.ShelterList[i]["city"]["$t"]</td>
         <td>@ViewBag.ShelterList[i]["zip"]["$t"]</td>
-        <td><li>@Html.ActionLink("Use this shelter", "PetSearch", "Shelter", new { id = ViewBag.ShelterList[i]["id"]["$t"] })</li></td>
+        <td>@ViewBag.ShelterList[i]["id"]["$t"]</td>
+        <td><li>@Html.ActionLink("Use this shelter", "PetSearch", "Shelter", new { id = ViewBag.ShelterList[i]["id"]["$t"] },null)</li></td>
     </tr>
     }
 </table>

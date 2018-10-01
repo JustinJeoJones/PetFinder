@@ -11,7 +11,6 @@ namespace PetFinder.Views
 {
     public class ShelterController : Controller
     {
-        string shelterid = "0";
         // GET: Shelter
         [HttpGet]
         public ActionResult FindShelter()
@@ -45,18 +44,22 @@ namespace PetFinder.Views
 
         public ActionResult PetSearch(string id)
         {
-            HttpWebRequest WR = WebRequest.CreateHttp("http://api.petfinder.com/breed.list?key=ad29bfe79d7472a7094451439946b3ef&id=42739495&animal=cat&format=json");
+            HttpWebRequest WR = WebRequest.CreateHttp("http://api.petfinder.com/shelter.getPets?key=ad29bfe79d7472a7094451439946b3ef&id=" + id+ "&format=json");
             HttpWebResponse Response = (HttpWebResponse)WR.GetResponse();
             StreamReader Reader = new StreamReader(Response.GetResponseStream());
             string petData = Reader.ReadToEnd();
 
-            JObject JsonData = JObject.Parse(petData);
-            ViewBag.BreedList = JsonData["petfinder"]["breeds"]["breed"];
+                JObject JsonData = JObject.Parse(petData);
+            ViewBag.PetList = JsonData["petfinder"]["pets"]["pet"];
+            WR = WebRequest.CreateHttp("http://api.petfinder.com/shelter.get?key=ad29bfe79d7472a7094451439946b3ef&id=MI1005&format=json");
+             Response = (HttpWebResponse)WR.GetResponse();
+             Reader = new StreamReader(Response.GetResponseStream());
+            petData = Reader.ReadToEnd();
+
+             JsonData = JObject.Parse(petData);
+            ViewBag.ShelterInfo = JsonData["petfinder"]["shelter"];
             ViewBag.Message = "Page for viewing pet data.";
-            shelterid = id;
             return View();
-            
-            
         }
 
     }
