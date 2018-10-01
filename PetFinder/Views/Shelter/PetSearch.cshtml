@@ -6,23 +6,28 @@
 <h3>Name: @ViewBag.ShelterInfo["name"]["$t"]</h3>
 <h5>Phone: @ViewBag.ShelterInfo["phone"]["$t"]</h5>
 <h5>Email: @ViewBag.ShelterInfo["email"]["$t"]</h5>
-
+<h5>Address: @ViewBag.ShelterInfo["address1"]["$t"] @ViewBag.ShelterInfo["address2"]["$t"]</h5>
+<p>Note: If info is missing, the shelter has not submitted their info.</p>
 <table>
     <tr>
         <th>Name</th>
         <th>Specie</th>
         <th>Sex</th>
+        <th>Age</th>
+        <th>Size</th>
         <th>Description</th>
         <th>Picture</th>
     </tr>
     @for (int i = 0; i < ViewBag.PetList.Count; i++)
     {
     <tr>
-     <td>@ViewBag.PetList[i]["name"]["$t"]</td>
-     <td>@ViewBag.PetList[i]["animal"]["$t"]</td>
-    <td>@ViewBag.PetList[i]["sex"]["$t"]</td>
-    <td>@ViewBag.PetList[i]["description"]["$t"]</td>
-    <td><img height="250" width="250" src="@ViewBag.PetList[i]["media"]["photos"]["photo"][2]["$t"]" /></td>
+        <td>@ViewBag.PetList[i]["name"]["$t"]</td>
+        <td>@ViewBag.PetList[i]["animal"]["$t"]</td>
+        <td>@ViewBag.PetList[i]["sex"]["$t"]</td>
+        <td>@ViewBag.PetList[i]["age"]["$t"]</td>
+        <td>@ViewBag.PetList[i]["size"]["$t"]</td>
+        <td>@ViewBag.PetList[i]["description"]["$t"]</td>
+        <td><img height="250" width="250" src="@ViewBag.PetList[i]["media"]["photos"]["photo"][2]["$t"]" /></td>
     </tr>
     }
 </table>

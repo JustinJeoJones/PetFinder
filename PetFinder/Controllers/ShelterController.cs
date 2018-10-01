@@ -51,7 +51,7 @@ namespace PetFinder.Views
 
                 JObject JsonData = JObject.Parse(petData);
             ViewBag.PetList = JsonData["petfinder"]["pets"]["pet"];
-            WR = WebRequest.CreateHttp("http://api.petfinder.com/shelter.get?key=ad29bfe79d7472a7094451439946b3ef&id=MI1005&format=json");
+            WR = WebRequest.CreateHttp("http://api.petfinder.com/shelter.get?key=ad29bfe79d7472a7094451439946b3ef&id="+id+"&format=json");
              Response = (HttpWebResponse)WR.GetResponse();
              Reader = new StreamReader(Response.GetResponseStream());
             petData = Reader.ReadToEnd();
